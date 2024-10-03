@@ -1,8 +1,10 @@
 # Tasks
 - Create user model
-- Create Register route for user
 - Apply CORS rules
+- Add password hash
+- Update user model
 
 # Completed
+- Create Register route for user
 - Install nodemon dev server
 - Create mongodb connection using mongoose
