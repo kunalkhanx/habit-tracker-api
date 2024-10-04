@@ -1,10 +1,10 @@
 # Tasks
 - Apply CORS rules
-- Create Login Model
 - Create Login function
 - Create user middlware
 
 # Completed
+- Create Token Model
 - Update user model
 - Add password hash
 - Create Register route for user
