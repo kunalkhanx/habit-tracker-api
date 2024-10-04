@@ -4,14 +4,26 @@ const Case = require('case')
 const bcrypt = require('bcryptjs')
 
 const schema = new mongoose.Schema({
-    name: {
+    first_name: {
         type: String,
         required: true,
         minLength: 2,
         maxLength: 50,
+        trim: true,
         validate: (value) => {
             if(!validator.isAlpha(value)){
-                throw new Error('Invalid name.');
+                throw new Error('Invalid first name.');
+            }
+        }
+    },
+    last_name: {
+        type: String,
+        maxLength: 50,
+        default: null,
+        trim: true,
+        validate: (value) => {
+            if(!validator.isAlpha(value, 'en-US', {ignore: ' '})){
+                throw new Error('Invalid last name.');
             }
         }
     },
@@ -19,6 +31,7 @@ const schema = new mongoose.Schema({
         type: String,
         required: true,
         lowercase: true,
+        trim: true,
         unique: true,
         minLength: 5,
         maxLength: 50,
@@ -33,6 +46,19 @@ const schema = new mongoose.Schema({
         required: true,
         minLength: 8
     },
+    avatar: {
+        type: String,
+        default: null
+    },
+    dob: {
+        type: String,
+        default: null,
+    },
+    sex: {
+        type: String,
+        default: null,
+        enum: ['male', 'female', 'others']
+    },
     status: {
         type: Number,
         default: 0
@@ -42,7 +68,8 @@ const schema = new mongoose.Schema({
 
 schema.pre('save', async function(next){
     const user = this
-    user.name = Case.title(user.name.toLowerCase())
+    user.first_name = Case.title(user.first_name.toLowerCase())
+    user.last_name = Case.title(user.last_name.toLowerCase())
     if(user.isModified('password')){
         user.password = await bcrypt.hash(user.password + process.env.APP_KEY, 8)
     }

@@ -8,9 +8,12 @@ router.post('/register', async (req, res) => {
     try{
 
         const schema = Joi.object({
-            name: Joi.string().required().regex(/^[A-Za-z]+$/).min(2).max(50).messages({'string.pattern.base': 'Name should contain only alphabets' }),
+            first_name: Joi.string().required().regex(/^[A-Za-z]+$/).min(2).max(50).messages({'string.pattern.base': 'First name should contain only alphabets' }),
+            last_name: Joi.string().optional().regex(/^[A-Za-z\s]+$/).max(50).messages({'string.pattern.base': 'Last name should contain only alphabets & spaces' }),
             email: Joi.string().required().email().min(4).max(50),
-            password: Joi.string().required().min(8)
+            password: Joi.string().required().min(8),
+            sex: Joi.string().optional().valid('male', 'female', 'others'),
+            dob: Joi.date().optional()
         })
 
         const result = schema.validate(req.body)
