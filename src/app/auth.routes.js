@@ -4,6 +4,7 @@ const Joi = require('joi');
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken');
 const Token = require('../models/Token');
+const debug = require('../utils/debug')
 
 const router = express.Router()
 
@@ -37,7 +38,7 @@ router.post('/register', async (req, res) => {
             data: user
         })
     }catch(e){
-        console.log(e)
+        debug.error(e)
         return res.json({
             code: 500,
             message: e._message ? e._message : 'Required failed!'
@@ -96,7 +97,7 @@ router.post('/login', async (req, res) => {
         })
 
     }catch(e){
-        console.log(e)
+        debug.error(e)
         return res.json({
             code: 500,
             message: e._message ? e._message : 'Required failed!'
