@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node ./src/index.js",
     "dev": "nodemon ./src/index.js",
-    "database": ".\\mongodb\\bin\\mongod.exe --dbpath=database"
+    "database": ".\\mongodb\\bin\\mongod.exe --dbpath=database",
+    "seed": "node ./src/utils/database/seed.js"
   },
   "keywords": [],
   "author": "",
