@@ -4,7 +4,8 @@ const Joi = require('joi');
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken');
 const Token = require('../models/Token');
-const debug = require('../utils/debug')
+const debug = require('../utils/debug');
+const auth = require('../middlewares/auth');
 
 const router = express.Router()
 
@@ -89,7 +90,7 @@ router.post('/login', async (req, res) => {
         const token = new Token({token: jwt_token, expire, reference: `USER_LOGIN:${user.id}`})
         await token.save()
 
-        return res.json({
+        return res.status(201).json({
             code: 201,
             message: 'Request Complete!',
             data: user,
@@ -98,6 +99,24 @@ router.post('/login', async (req, res) => {
 
     }catch(e){
         debug.error(e)
+        return res.status(500).json({
+            code: 500,
+            message: e._message ? e._message : 'Required failed!'
+        })
+    }
+})
+
+router.get('/profile', auth, async (req, res) => {
+    try{
+
+        return res.status(200).json({
+            code: 200,
+            message: 'Request Complete!',
+            data: req.user
+        })
+
+    }catch(e){
+        debug.status(500).error(e)
         return res.json({
             code: 500,
             message: e._message ? e._message : 'Required failed!'

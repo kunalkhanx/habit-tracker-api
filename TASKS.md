@@ -1,10 +1,12 @@
 # Tasks
 - Apply CORS rules
-- Create user middlware
-- Add/replace console log with debug log
-- Hide user password from result
+- Create Habit model
 
 # Completed
+- Create user middlware
+- Hide user password from result
+- Add view profile function
+- Add/replace console log with debug log
 - Create Login function
 - Create Token Model
 - Update user model
