@@ -1,9 +1,11 @@
 # Tasks
 - Apply CORS rules
-- Create Login function
 - Create user middlware
+- Add/replace console log with debug log
+- Hide user password from result
 
 # Completed
+- Create Login function
 - Create Token Model
 - Update user model
 - Add password hash
