@@ -1,7 +1,6 @@
 # Tasks
 - Apply CORS rules
 - Create Habit Entries model
-- Add create habit function
 - Add update habit function
 - Add delete habit function
 - Add list habits function
@@ -12,6 +11,7 @@
 - Verify status on login & auth
 
 # Completed
+- Add create habit function
 - Create Habit model
 - Create user middlware
 - Hide user password from result

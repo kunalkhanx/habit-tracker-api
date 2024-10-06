@@ -26,21 +26,22 @@ router.post('/register', async (req, res) => {
             const message = result.error.details[0].message
             return res.status(400).json({
                 code: 400,
-                message: message
+                message: 'Invalid input(s)',
+                data: message
             })
         }
 
         const user = new User(result.value)
         await user.save()
 
-        return res.json({
+        return res.status(201).json({
             code: 201,
             message: 'Request Complete!',
             data: user
         })
     }catch(e){
         debug.error(e)
-        return res.json({
+        return res.status(500).json({
             code: 500,
             message: e._message ? e._message : 'Required failed!'
         })
@@ -59,7 +60,8 @@ router.post('/login', async (req, res) => {
             const message = result.error.details[0].message
             return res.status(400).json({
                 code: 400,
-                message: message
+                message: 'Invalid input(s)',
+                data: message
             })
         }
 
@@ -116,8 +118,8 @@ router.get('/profile', auth, async (req, res) => {
         })
 
     }catch(e){
-        debug.status(500).error(e)
-        return res.json({
+        debug.error(e)
+        return res.status(500).json({
             code: 500,
             message: e._message ? e._message : 'Required failed!'
         })
