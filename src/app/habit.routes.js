@@ -46,5 +46,49 @@ router.post('/', auth, async (req, res) => {
     }
 })
 
+router.patch('/:id', auth, async (req, res) => {
+    try{
+
+        const schema = Joi.object({
+            name: Joi.string().optional().min(2).max(100),
+            description: Joi.string().optional().max(1024),
+            has_target: Joi.boolean().optional().default(true),
+            target_unit: Joi.string().optional(),
+            target: Joi.number().optional().default(0),
+            frequency: Joi.string().optional().valid('Daily', 'Weekly', 'Monthly', 'Yearly')
+        })
+
+        const result = schema.validate(req.body)
+        if(result.error){
+            const message = result.error.details[0].message
+            return res.status(400).json({
+                code: 400,
+                message: 'Invalid input(s)',
+                data: message
+            })
+        }
+
+        const habit = await Habit.findById(req.params.id)
+
+        for(let value in result.value){
+            habit[value] = result.value[value]
+        }
+
+        await habit.save()
+        
+        return res.status(201).json({
+            code: 201,
+            message: 'Request Complete!',
+            data: habit
+        })
+    }catch(e){
+        debug.error(e)
+        return res.status(500).json({
+            code: 500,
+            message: e._message ? e._message : 'Required failed!'
+        })
+    }
+})
+
 
 module.exports = router

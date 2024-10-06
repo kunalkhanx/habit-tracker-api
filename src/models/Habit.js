@@ -42,7 +42,7 @@ const schema = new mongoose.Schema({
         type: Object,
         default: null
     }
-})
+}, {timestamps: true})
 
 const Habit = mongoose.model('Habit', schema)
 module.exports = Habit
