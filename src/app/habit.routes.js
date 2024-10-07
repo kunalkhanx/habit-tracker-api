@@ -24,6 +24,24 @@ router.get('/', auth, async (req, res) => {
     }
 })
 
+router.get('/:id', auth, async (req, res) => {
+    try{
+        const habit = await Habit.findOne({user: req.user._id, _id: req.params.id})
+
+        return res.status(200).json({
+            code: 200,
+            message: 'Request Complete!',
+            data: habit
+        })
+    }catch(e){
+        debug.error(e)
+        return res.status(500).json({
+            code: 500,
+            message: e._message ? e._message : 'Required failed!'
+        })
+    }
+})
+
 router.post('/', auth, async (req, res) => {
     try{
 
