@@ -6,13 +6,13 @@
 - Add email verification functions
 - Add forgot password function
 - Verify status on login & auth
-- Create HabitEntries model
 - Create add entry function
 - Create update entry function
 - Create delete entry function
 - Implement entries on habit get results
 
 # Completed
+- Create HabitEntries model
 - Add get habit function
 - Add list habits function
 - Add update habit function

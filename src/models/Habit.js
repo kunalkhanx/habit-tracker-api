@@ -38,6 +38,10 @@ const schema = new mongoose.Schema({
         type: String,
         default: 'Daily'
     },
+    status: {
+        type: Number,
+        default: 1
+    },
     meta: {
         type: Object,
         default: null
