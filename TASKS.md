@@ -2,14 +2,17 @@
 - Apply CORS rules
 - Create Habit Entries model
 - Add delete habit function
-- Add list habits function
 - Add get habit function
 - Add update profile function
 - Add email verification functions
 - Add forgot password function
 - Verify status on login & auth
+- Create HabitEntries model
+- Create add entry function
+- Implement entries on habit get results
 
 # Completed
+- Add list habits function
 - Add update habit function
 - Add create habit function
 - Create Habit model

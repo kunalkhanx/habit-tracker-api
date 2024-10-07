@@ -83,7 +83,7 @@ router.post('/login', async (req, res) => {
             })
         }
 
-        const expire = 60*60
+        const expire = process.env.AUTH_DURATION
 
         const jwt_token = jwt.sign({
             email: user.email,
