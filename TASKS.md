@@ -5,11 +5,11 @@
 - Add email verification functions
 - Add forgot password function
 - Verify status on login & auth
-- Create update entry function
 - Create delete entry function
 - Implement entries on habit get results
 
 # Completed
+- Create update entry function
 - Create add entry function
 - Create HabitEntries model
 - Add get habit function
