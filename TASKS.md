@@ -1,14 +1,16 @@
 # Tasks
 - Apply CORS rules
-- Add delete habit function
 - Add update profile function
 - Add email verification functions
 - Add forgot password function
 - Verify status on login & auth
 - Create delete entry function
 - Add filter for HabitEntries
+- Add comments of route functions
+- Limit queries
 
 # Completed
+- Add delete habit function
 - Implement entries on habit get results
 - Create update entry function
 - Create add entry function

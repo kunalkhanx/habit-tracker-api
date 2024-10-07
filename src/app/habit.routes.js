@@ -25,9 +25,9 @@ router.get('/', auth, async (req, res) => {
     }
 })
 
-router.get('/:id', auth, async (req, res) => {
+router.get('/:habit', auth, async (req, res) => {
     try{
-        const habit = await Habit.findOne({user: req.user._id, _id: req.params.id})
+        const habit = await Habit.findOne({user: req.user._id, _id: req.params.habit})
         if(!habit){
             return res.status(404).json({
                 code: 404,
@@ -95,7 +95,7 @@ router.post('/', auth, async (req, res) => {
     }
 })
 
-router.patch('/:id', auth, async (req, res) => {
+router.patch('/:habit', auth, async (req, res) => {
     try{
 
         const schema = Joi.object({
@@ -117,7 +117,14 @@ router.patch('/:id', auth, async (req, res) => {
             })
         }
 
-        const habit = await Habit.findById(req.params.id)
+        const habit = await Habit.findById(req.params.habit)
+
+        if(!habit){
+            return res.status(404).json({
+                code: 404,
+                message: 'Habit not found!'
+            }) 
+        }
 
         for(let value in result.value){
             habit[value] = result.value[value]
@@ -139,5 +146,32 @@ router.patch('/:id', auth, async (req, res) => {
     }
 })
 
+router.delete('/:habit', auth, async (req, res) => {
+    try{
+        const habit = await Habit.findOne({user: req.user._id, _id: req.params.habit})
+
+        if(!habit){
+            return res.status(404).json({
+                code: 404,
+                message: 'Habit not found!'
+            }) 
+        }
+
+        await Habit.deleteOne({_id: habit._id})
+        await HabitEntry.deleteMany({habit: habit._id})
+
+        return res.status(200).json({
+            code: 200,
+            message: 'Request Complete!'
+        })
+
+    }catch(e){
+        debug.error(e)
+        return res.status(500).json({
+            code: 500,
+            message: e._message ? e._message : 'Required failed!'
+        })
+    }
+})
 
 module.exports = router
