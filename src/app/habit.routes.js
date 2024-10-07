@@ -3,6 +3,7 @@ const debug = require('../utils/debug')
 const Joi = require('joi')
 const Habit = require('../models/Habit')
 const auth = require('../middlewares/auth')
+const HabitEntry = require('../models/HabitEntry')
 
 const router = express.Router()
 
@@ -27,11 +28,23 @@ router.get('/', auth, async (req, res) => {
 router.get('/:id', auth, async (req, res) => {
     try{
         const habit = await Habit.findOne({user: req.user._id, _id: req.params.id})
-
+        if(!habit){
+            return res.status(404).json({
+                code: 404,
+                message: 'Habit not found!'
+            }) 
+        }
+        const entries = await HabitEntry.find({habit: habit._id, user: req.user._id})
+        if(!habit){
+            return res.status(404).json({
+                code: 404,
+                message: 'Entry not found!'
+            }) 
+        }
         return res.status(200).json({
             code: 200,
             message: 'Request Complete!',
-            data: habit
+            data: {habit, entries}
         })
     }catch(e){
         debug.error(e)

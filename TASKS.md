@@ -6,9 +6,10 @@
 - Add forgot password function
 - Verify status on login & auth
 - Create delete entry function
-- Implement entries on habit get results
+- Add filter for HabitEntries
 
 # Completed
+- Implement entries on habit get results
 - Create update entry function
 - Create add entry function
 - Create HabitEntries model
