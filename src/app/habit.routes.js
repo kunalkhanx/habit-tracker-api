@@ -9,7 +9,10 @@ const router = express.Router()
 
 router.get('/', auth, async (req, res) => {
     try{
-        const habits = await Habit.find({user: req.user._id})
+        const skip = req.query.skip ? req.query.skip : 0
+        const limit = req.query.limit ? req.query.limit : 0
+
+        const habits = await Habit.find({user: req.user._id}).skip(skip).limit(limit)
 
         return res.status(200).json({
             code: 200,
@@ -34,7 +37,11 @@ router.get('/:habit', auth, async (req, res) => {
                 message: 'Habit not found!'
             }) 
         }
-        const entries = await HabitEntry.find({habit: habit._id, user: req.user._id})
+
+        const skip = req.query.skip ? req.query.skip : 0
+        const limit = req.query.limit ? req.query.limit : 0
+
+        const entries = await HabitEntry.find({habit: habit._id, user: req.user._id}).skip(skip).limit(limit)
         if(!habit){
             return res.status(404).json({
                 code: 404,

@@ -6,9 +6,9 @@
 - Verify status on login & auth
 - Add filter for HabitEntries
 - Add comments of route functions
-- Limit queries
 
 # Completed
+- Limit queries
 - Create delete entry function
 - Add delete habit function
 - Implement entries on habit get results
