@@ -51,7 +51,7 @@ router.post('/:habit', auth, async (req, res) => {
 })
 
 
-router.patch('/:habit/:entry', auth, async (req, res) => {
+router.patch('/:entry', auth, async (req, res) => {
     try{
 
         const schema = Joi.object({
@@ -69,14 +69,7 @@ router.patch('/:habit/:entry', auth, async (req, res) => {
             })
         }
 
-        const habit = await Habit.findOne({user: req.user._id, _id: req.params.habit})
-        if(!habit){
-            return res.status(404).json({
-                code: 404,
-                message: 'Habit not found!'
-            })
-        }
-        const entry = await HabitEntry.findOne({user: req.user._id, habit: req.params.habit, _id: req.params.entry})
+        const entry = await HabitEntry.findOne({user: req.user._id, _id: req.params.entry})
         if(!entry){
             return res.status(404).json({
                 code: 404,
@@ -94,6 +87,25 @@ router.patch('/:habit/:entry', auth, async (req, res) => {
             data: entry
         })
         
+    }catch(e){
+        debug.error(e)
+        return res.status(500).json({
+            code: 500,
+            message: e._message ? e._message : 'Required failed!'
+        })
+    }
+})
+
+router.delete('/:entry', auth, async (req, res) => {
+    try{
+
+       await HabitEntry.deleteOne({_id: req.params.entry, user: req.user._id})
+
+        return res.status(200).json({
+            code: 200,
+            message: 'Request Complete!'
+        })
+
     }catch(e){
         debug.error(e)
         return res.status(500).json({

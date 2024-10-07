@@ -4,12 +4,12 @@
 - Add email verification functions
 - Add forgot password function
 - Verify status on login & auth
-- Create delete entry function
 - Add filter for HabitEntries
 - Add comments of route functions
 - Limit queries
 
 # Completed
+- Create delete entry function
 - Add delete habit function
 - Implement entries on habit get results
 - Create update entry function
