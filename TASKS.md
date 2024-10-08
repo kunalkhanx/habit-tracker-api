@@ -1,6 +1,5 @@
 # Tasks
 - Apply CORS rules
-- Add update profile function
 - Add email verification functions
 - Add forgot password function
 - Verify status on login & auth
@@ -8,6 +7,7 @@
 - Add comments of route functions
 
 # Completed
+- Add update profile function
 - Limit queries
 - Create delete entry function
 - Add delete habit function
