@@ -11,7 +11,7 @@ const router = express.Router()
 router.get('/', auth, async (req, res) => {
     try{
         const skip = req.query.skip ? req.query.skip : 0
-        const limit = req.query.limit ? req.query.limit : 0
+        const limit = req.query.limit ? req.query.limit : 500
 
         const habits = await Habit.find({user: req.user._id}).skip(skip).limit(limit)
 
@@ -40,7 +40,7 @@ router.get('/:habit', auth, async (req, res) => {
         }
 
         const skip = req.query.skip ? req.query.skip : 0
-        const limit = req.query.limit ? req.query.limit : 0
+        const limit = req.query.limit ? req.query.limit : 500
 
         const query = {
             habit: habit._id, 

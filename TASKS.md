@@ -3,9 +3,9 @@
 - Add email verification functions
 - Add forgot password function
 - Add comments of route functions
-- Set default limit 500
 
 # Completed
+- Set default limit 500
 - Add date filter for HabitEntries
 - Verify status on login & auth
 - Add update profile function
