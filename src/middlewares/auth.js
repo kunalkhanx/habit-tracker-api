@@ -14,7 +14,7 @@ const auth = async (req, res, next) => {
         if(!token){
             throw new Error('Unauthorized access!')
         }
-        const user = await User.findOne({email: payload.email})
+        const user = await User.findOne({email: payload.email, status: {$gt: 0}})
         if(!user){
             throw new Error('Unauthorized access!')
         }

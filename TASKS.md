@@ -2,11 +2,11 @@
 - Apply CORS rules
 - Add email verification functions
 - Add forgot password function
-- Verify status on login & auth
 - Add filter for HabitEntries
 - Add comments of route functions
 
 # Completed
+- Verify status on login & auth
 - Add update profile function
 - Limit queries
 - Create delete entry function

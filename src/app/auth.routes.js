@@ -31,7 +31,7 @@ router.post('/register', async (req, res) => {
             })
         }
 
-        const user = new User(result.value)
+        const user = new User({...result.value, status: 1})
         await user.save()
 
         return res.status(201).json({
@@ -65,7 +65,7 @@ router.post('/login', async (req, res) => {
             })
         }
 
-        const user = await User.findOne({email: result.value.email})
+        const user = await User.findOne({email: result.value.email, status: {$gt: 0}})
 
         if(!user){
             return res.status(401).json({
