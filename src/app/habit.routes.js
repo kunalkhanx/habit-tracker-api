@@ -1,6 +1,7 @@
 const express = require('express')
-const debug = require('../utils/debug')
 const Joi = require('joi')
+const moment = require('moment');
+const debug = require('../utils/debug')
 const Habit = require('../models/Habit')
 const auth = require('../middlewares/auth')
 const HabitEntry = require('../models/HabitEntry')
@@ -41,7 +42,17 @@ router.get('/:habit', auth, async (req, res) => {
         const skip = req.query.skip ? req.query.skip : 0
         const limit = req.query.limit ? req.query.limit : 0
 
-        const entries = await HabitEntry.find({habit: habit._id, user: req.user._id}).skip(skip).limit(limit)
+        const query = {
+            habit: habit._id, 
+            user: req.user._id, 
+            entry_on: {$gte: moment(req.query.start_date ? req.query.start_date : undefined).startOf('day').toDate()}
+        }
+
+        if(req.query.end_date){
+            query.entry_on.$lte = moment(req.query.end_date).endOf('day').toDate()
+        }
+
+        const entries = await HabitEntry.find(query).skip(skip).limit(limit)
         if(!habit){
             return res.status(404).json({
                 code: 404,
