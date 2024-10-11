@@ -9,6 +9,9 @@ const auth = require('../middlewares/auth');
 
 const router = express.Router()
 
+/**
+*    Register new user
+*/
 router.post('/register', async (req, res) => {
     try{
 
@@ -48,6 +51,9 @@ router.post('/register', async (req, res) => {
     }
 });
 
+/**
+*    Login existing user
+*/
 router.post('/login', async (req, res) => {
     try{
         const schema = Joi.object({
@@ -108,6 +114,9 @@ router.post('/login', async (req, res) => {
     }
 })
 
+/**
+*    Get logged in user profile
+*/
 router.get('/profile', auth, async (req, res) => {
     try{
 

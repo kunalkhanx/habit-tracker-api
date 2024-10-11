@@ -8,6 +8,9 @@ const HabitEntry = require('../models/HabitEntry')
 
 const router = express.Router()
 
+/**
+*    Get all Habits
+*/
 router.get('/', auth, async (req, res) => {
     try{
         const skip = req.query.skip ? req.query.skip : 0
@@ -29,6 +32,9 @@ router.get('/', auth, async (req, res) => {
     }
 })
 
+/**
+*    Get Habit & Entries
+*/
 router.get('/:habit', auth, async (req, res) => {
     try{
         const habit = await Habit.findOne({user: req.user._id, _id: req.params.habit})
@@ -73,6 +79,9 @@ router.get('/:habit', auth, async (req, res) => {
     }
 })
 
+/**
+*    Create new Habit
+*/
 router.post('/', auth, async (req, res) => {
     try{
 
@@ -113,6 +122,9 @@ router.post('/', auth, async (req, res) => {
     }
 })
 
+/**
+*    Update existing Habit
+*/
 router.patch('/:habit', auth, async (req, res) => {
     try{
 
@@ -164,6 +176,9 @@ router.patch('/:habit', auth, async (req, res) => {
     }
 })
 
+/**
+*    Delete existing Habit
+*/
 router.delete('/:habit', auth, async (req, res) => {
     try{
         const habit = await Habit.findOne({user: req.user._id, _id: req.params.habit})

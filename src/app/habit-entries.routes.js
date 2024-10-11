@@ -7,6 +7,9 @@ const debug = require('../utils/debug')
 
 const router = express.Router()
 
+/**
+*    Create new entry for Habit
+*/
 router.post('/:habit', auth, async (req, res) => {
     try{
 
@@ -50,7 +53,9 @@ router.post('/:habit', auth, async (req, res) => {
     }
 })
 
-
+/**
+*    Update existing entry for Habit
+*/
 router.patch('/:entry', auth, async (req, res) => {
     try{
 
@@ -96,6 +101,9 @@ router.patch('/:entry', auth, async (req, res) => {
     }
 })
 
+/**
+*    Delete existing entry for Habit
+*/
 router.delete('/:entry', auth, async (req, res) => {
     try{
 

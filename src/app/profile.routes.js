@@ -4,6 +4,9 @@ const Joi = require('joi')
 
 const router = express.Router()
 
+/**
+*    Update logged in user profile
+*/
 router.patch('/', auth, async (req, res) => {
     try{
 
