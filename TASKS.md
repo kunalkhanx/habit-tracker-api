@@ -3,6 +3,7 @@
 - Add email verification functions
 - Add forgot password function
 - Move profile route from auth to profile
+- Add notes for habit entries
 
 # Completed
 - Add comments of route functions

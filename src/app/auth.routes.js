@@ -114,25 +114,4 @@ router.post('/login', async (req, res) => {
     }
 })
 
-/**
-*    Get logged in user profile
-*/
-router.get('/profile', auth, async (req, res) => {
-    try{
-
-        return res.status(200).json({
-            code: 200,
-            message: 'Request Complete!',
-            data: req.user
-        })
-
-    }catch(e){
-        debug.error(e)
-        return res.status(500).json({
-            code: 500,
-            message: e._message ? e._message : 'Required failed!'
-        })
-    }
-})
-
 module.exports = router
