@@ -20,6 +20,12 @@ const schema = new mongoose.Schema({
         type: String,
         required: true
     },
+    note: {
+        type: String,
+        required: false,
+        default: null,
+        maxLength: 1000
+    },
     status: {
         type: Number,
         default: 1

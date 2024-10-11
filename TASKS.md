@@ -2,10 +2,10 @@
 - Apply CORS rules
 - Add email verification functions
 - Add forgot password function
-- Move profile route from auth to profile
-- Add notes for habit entries
 
 # Completed
+- Add notes for habit entries
+- Move profile route from auth to profile
 - Add comments of route functions
 - Set default limit 500
 - Add date filter for HabitEntries

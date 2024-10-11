@@ -15,7 +15,8 @@ router.post('/:habit', auth, async (req, res) => {
 
         const schema = Joi.object({
             entry_on: Joi.date().required(),
-            entry_value: Joi.string().required()
+            entry_value: Joi.string().required(),
+            note: Joi.string().optional().max(1000)
         })
 
         const result = schema.validate(req.body)
@@ -61,7 +62,8 @@ router.patch('/:entry', auth, async (req, res) => {
 
         const schema = Joi.object({
             entry_on: Joi.date().optional(),
-            entry_value: Joi.string().optional()
+            entry_value: Joi.string().optional(),
+            note: Joi.string().optional().max(1000)
         })
 
         const result = schema.validate(req.body)
