@@ -1,9 +1,9 @@
 # Tasks
-- Apply CORS rules
-- Add email verification functions
-- Add forgot password function
+- Create README.md file
+- Find & fix minor bug and optimizations
 
 # Completed
+- Apply CORS rules
 - Add notes for habit entries
 - Move profile route from auth to profile
 - Add comments of route functions
