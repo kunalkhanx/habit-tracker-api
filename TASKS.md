@@ -1,8 +1,9 @@
 # Tasks
 - Create README.md file
-- Find & fix minor bug and optimizations
+- Verify useid on token from db in auth
 
 # Completed
+- Find & fix minor bug and optimizations
 - Apply CORS rules
 - Add notes for habit entries
 - Move profile route from auth to profile

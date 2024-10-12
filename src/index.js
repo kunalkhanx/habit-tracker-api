@@ -16,6 +16,6 @@ app.use(express.json());
 
 app.use('/api/v1', routes)
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || 8080, () => {
     console.log(`Server running on http://localhost:${process.env.PORT}`)
 })
