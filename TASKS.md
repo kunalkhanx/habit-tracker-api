@@ -1,9 +1,9 @@
 # Tasks
 - Verify userid on token from db in auth
 - Add downloadble postman file
-- Add LICENSE
 
 # Completed
+- Add LICENSE
 - Create README.md file
 - Find & fix minor bug and optimizations
 - Apply CORS rules
