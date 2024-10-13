@@ -18,10 +18,6 @@ const schema = new mongoose.Schema({
         ref: 'User',
         required: true
     },
-    status: {
-        type: Number,
-        default: 1
-    },
     has_target: {
         type: Boolean,
         default: true

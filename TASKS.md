@@ -1,8 +1,10 @@
 # Tasks
-- Create README.md file
-- Verify useid on token from db in auth
+- Verify userid on token from db in auth
+- Add downloadble postman file
+- Add LICENSE
 
 # Completed
+- Create README.md file
 - Find & fix minor bug and optimizations
 - Apply CORS rules
 - Add notes for habit entries
