@@ -44,5 +44,6 @@ const schema = new mongoose.Schema({
     }
 }, {timestamps: true})
 
+
 const Habit = mongoose.model('Habit', schema)
 module.exports = Habit
