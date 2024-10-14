@@ -1,8 +1,8 @@
 # Tasks
-- Verify userid on token from db in auth
 - Add downloadble postman file
 
 # Completed
+- Verify userid on token from db in auth
 - Add LICENSE
 - Create README.md file
 - Find & fix minor bug and optimizations

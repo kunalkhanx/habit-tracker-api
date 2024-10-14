@@ -5,13 +5,12 @@
   "scripts": {
     "start": "node ./src/index.js",
     "dev": "nodemon ./src/index.js",
-    "database": ".\\mongodb\\bin\\mongod.exe --dbpath=database",
     "seed": "node ./src/utils/database/seed.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "author": "Kunal",
+  "license": "MIT",
+  "description": "A RESTful API for tracking daily habits, where users can sign up, sign in, create habits, and record their progress. This project is built with Node.js, Express, and MongoDB (Mongoose), and is designed to provide a backend service for habit tracking applications.",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.3",
